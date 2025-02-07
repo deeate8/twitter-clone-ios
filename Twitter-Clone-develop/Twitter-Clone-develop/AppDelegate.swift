@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Twitter-Clone
+//  Twitter-Clone-develop
 //
-//  Created by Dee Jordan on 6/2/2025.
+//  Created by Dee Jordan on 7/2/2025.
 //
 
 import UIKit
