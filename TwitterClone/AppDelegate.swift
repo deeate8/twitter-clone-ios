@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Twitter-Clone-develop
+//  TwitterClone
 //
 //  Created by Dee Jordan on 7/2/2025.
 //
