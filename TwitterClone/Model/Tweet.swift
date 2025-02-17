@@ -8,12 +8,17 @@
 import Foundation
 import RealmSwift
 
-// variables
 
 class Tweet: Object {
-    @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted var text: String = ""
     @Persisted var username: String = ""
+    @Persisted var createdAt: String = ""
     @Persisted var userHandle: String = ""
-    @Persisted var createdAt: Date = Date()
+    @Persisted var text: String = ""
+    
+    init(username: String, createdAt: String, userHandle: String, text: String) {
+        self.username = username as String
+        self.createdAt = createdAt as String
+        self.userHandle = userHandle as String
+        self.text = text as String
+    }
 }
