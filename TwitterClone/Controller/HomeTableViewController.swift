@@ -7,22 +7,22 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var hometableView: UITableView!
     
     private var tweets: [Tweet] = []
-    private let realm = try! Realm()
+//    private let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hometableView.register(UINib(nibName:"TweetCell" , bundle: nil), forCellReuseIdentifier: "tweetcell")
         hometableView.delegate = self
         hometableView.dataSource = self
-        self.setTweets()
+//        self.setTweets()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
       }
     
-    func setTweets() {
-        tweets = [Tweet(username: "User.Taro", createdAt: "today", userHandle: "@123", text: "テストテストテストテスト")]
-    }
+//    func setTweets() {
+//        tweets = [Tweet(username: "User.Taro", createdAt: "today", userHandle: "@123", text: "テストテストテストテスト")]
+//    }
     
     
     
@@ -39,12 +39,12 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         return 1
       }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetcell", for: indexPath) as! TweetCell
         
-        cell.setCell(tweet: tweets[indexPath.row])
+//        cell.setCell(tweet: tweets[indexPath.row])
         return cell
     }
 }
