@@ -1,18 +1,16 @@
 //
-//  TweetCell.swift
+//  ComposeTweetController.swift
 //  TwitterClone
 //
-//  Created by Dee Jordan on 18/2/2025.
+//  Created by Dee Jordan on 19/2/2025.
 //
 
 import UIKit
 
-class TweetCell: UITableViewCell {
+class ComposeTweetController: UITableViewCell {
+
     @IBOutlet weak var username: UILabel!
-    
-    @IBOutlet weak var userHandle: UILabel!
-    
-    @IBOutlet weak var tweetText: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +22,6 @@ class TweetCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     
 }

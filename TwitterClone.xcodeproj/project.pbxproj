@@ -52,11 +52,15 @@
 				"/Localized: Main.storyboard",
 				AppDelegate.swift,
 				Assets.xcassets,
-				Controller/HomeTableViewController.swift,
+				ComposeTweetController.swift,
+				ComposeTweetController.xib,
+				Controller/HomeViewController.swift,
+				Controller/NextViewController.swift,
 				Model/Tweet.swift,
 				SceneDelegate.swift,
 				TweetCell.swift,
 				TweetCell.xib,
+				TweetPostViewController.swift,
 			);
 			target = 15849FC22D5F2AE7005D59D7 /* TwitterClone */;
 		};
@@ -67,12 +71,16 @@
 				"/Localized: Main.storyboard",
 				AppDelegate.swift,
 				Assets.xcassets,
-				Controller/HomeTableViewController.swift,
+				ComposeTweetController.swift,
+				ComposeTweetController.xib,
+				Controller/HomeViewController.swift,
+				Controller/NextViewController.swift,
 				Info.plist,
 				Model/Tweet.swift,
 				SceneDelegate.swift,
 				TweetCell.swift,
 				TweetCell.xib,
+				TweetPostViewController.swift,
 			);
 			target = 15849FD82D5F2AE9005D59D7 /* TwitterCloneTests */;
 		};
