@@ -14,7 +14,8 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             super.viewDidLoad()
             hometableView.delegate = self
             hometableView.dataSource = self
-            hometableView.register(UITableViewCell.self, forCellReuseIdentifier: "TweetCell")
+//            hometableView.register(UITableViewCell.self, forCellReuseIdentifier: "TweetCell")
+            hometableView.register(UINib(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: "TweetCell")
             loadTweets()
         }
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +47,7 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+        return 1
       }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,10 +55,21 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = hometableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+            
             if let tweet = tweets?[indexPath.row] {
-                cell.textLabel?.text = tweet.text
-                cell.detailTextLabel?.text = "\(tweet.createdAt)"
+                // Configure the custom cell
+//                cell.userHandle.text = "\(tweet.userHandle)"
+                cell.tweetText.text = tweet.text
+                cell.userHandle.numberOfLines = 1
+                cell.tweetText.numberOfLines = 0
+    
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//            let cell = hometableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath)
+//            if let tweet = tweets?[indexPath.row] {
+//                cell.textLabel?.text = tweet.text
+//                cell.detailTextLabel?.text = "\(tweet.createdAt)"
             }
             return cell
         }
