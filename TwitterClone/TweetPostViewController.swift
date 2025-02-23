@@ -48,10 +48,9 @@ class TweetPostViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func postTapped(_ sender: Any) {
-        guard let tweetText = TweetTextField.text, !tweetText.isEmpty else {
-                    return
-                }
-        
+//        guard let tweetText = TweetTextField.text, !tweetText.isEmpty else {
+//                    return
+//                }
         let content = getTweetContent()
         if content.isEmpty {
             let alert = UIAlertController(title: "エラー", message: "ツイート内容を入力してください", preferredStyle: .alert)
@@ -59,17 +58,19 @@ class TweetPostViewController: UIViewController, UITextViewDelegate {
             self.present(alert, animated: true)
             return
         }
-                    
-                    let successAlert = UIAlertController(title: "成功", message: "ツイートを投稿しました", preferredStyle: .alert)
-                            successAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-                                self.dismiss(animated: true)
-                            })
-                            self.present(successAlert, animated: true)
+        
         let tweet = Tweet()
-                tweet.text = tweetText
+        tweet.text = content
 
                 try! realm.write {
                     realm.add(tweet)
                 }
-                }
+        
+        let successAlert = UIAlertController(title: "成功", message: "ツイートを投稿しました", preferredStyle: .alert)
+                            successAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                                self.dismiss(animated: true)
+                            })
+                            self.present(successAlert, animated: true)
+        
+        }
     }
