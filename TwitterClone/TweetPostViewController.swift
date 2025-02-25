@@ -15,6 +15,7 @@ class TweetPostViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var TweetTextField: UITextView!
     
     private let username = "@Taro123"
+    private let maxCharacterLimit = 140
     let realm = try! Realm()
     
     
@@ -43,6 +44,15 @@ class TweetPostViewController: UIViewController, UITextViewDelegate {
             return text
         }
     
+    private func showAlert(title: String, message: String, completion: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            completion?()
+        })
+        self.present(alert, animated: true)
+    }
+    
+    
     @IBAction func cancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -53,9 +63,12 @@ class TweetPostViewController: UIViewController, UITextViewDelegate {
 //                }
         let content = getTweetContent()
         if content.isEmpty {
-            let alert = UIAlertController(title: "エラー", message: "ツイート内容を入力してください", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
+            showAlert(title: "エラー", message: "ツイート内容を入力してください")
+            return
+        }
+        
+        if content.count > maxCharacterLimit {
+            showAlert(title: "エラー", message: "ツイートは140文字以内で入力してください")
             return
         }
         
