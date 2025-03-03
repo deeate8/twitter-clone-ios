@@ -38,9 +38,9 @@ class TweetPostViewController: UIViewController, UITextViewDelegate {
     
     
     //    test
-            func isTweetWithinLimit(_ tweet: String) -> Bool {
-                return tweet.count <= 140
-            }
+    func isTweetWithinLimit(_ content: String) -> Bool {
+        return content.count <= maxCharacterLimit
+    }
     
     
     
@@ -72,10 +72,10 @@ class TweetPostViewController: UIViewController, UITextViewDelegate {
             return
         }
         
-        if content.count > maxCharacterLimit {
-            showAlert(title: "エラー", message: "ツイートは140文字以内で入力してください")
-            return
-        }
+        if !isTweetWithinLimit(content) {
+                showAlert(title: "エラー", message: "ツイートは140文字以内で入力してください")
+                return
+            }
         
         let tweet = Tweet()
         tweet.text = content
